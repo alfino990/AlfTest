@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Task</title>
+
+</head>
+<body>
+	<center>
+		<h1>Task Page</h1>
+		<br>
+
+		<form th:action="@{/taskTest}" method="post">
+			<div>
+				<label> Description <input type="text" name="description"
+					placeholder="Description" />
+				</label> <label> Type <input type="text" name="type"
+					placeholder="Father/Son" />
+				</label> <label> Father <input type="text" name="father"
+					placeholder="Insert id Father" />
+					<label> User <input type="text" name="user"
+					placeholder="username" />
+					
+				</label> <input type="submit" value="Add Task" />
+			</div>
+		</form>
+	<h3 style="color:red;" th:text="${message}"></h3>
+	
+<a href="/read" type="submit">List Task</a>
+<a href="/user" type="submit">List User</a>
+	
+	</center>
+
+
+</body>
+</html>
