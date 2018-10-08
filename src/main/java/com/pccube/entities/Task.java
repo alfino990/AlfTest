@@ -18,21 +18,32 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-		
+
 	@Column
 	private String description;
-	
+
 	@Column
 	private String type;
-	
+
+//	public Task() {
+//		
+//	}
+//	public Task(String description, String type, User user) {
+//		super();
+//		this.description = description;
+//		this.type = type;
+//		//this.children = children;
+//		this.user = user;
+//	}
+
 	@OneToMany
 	private List<Task> children = new ArrayList<>();
-	
-	//utente a cui viene assegnato il task
+
+	// utente a cui viene assegnato il task
 	@ManyToOne
 	@JoinColumn(name = "username")
-	private User user_id;
-	
+	private User user;
+
 	public Long getId() {
 		return id;
 	}
@@ -55,6 +66,13 @@ public class Task {
 
 	public void setDescrizione(String description) {
 		this.description = description;
+	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

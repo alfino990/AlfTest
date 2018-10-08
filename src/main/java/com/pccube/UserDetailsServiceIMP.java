@@ -19,7 +19,7 @@ public class UserDetailsServiceIMP implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		User user = userRepository.findByUsername(username);
-
+		System.out.println("user.getType() ====================> "+user.getType());
 		if (user == null) {
 			throw new UsernameNotFoundException("The user " + username + " does not exist");
 		}

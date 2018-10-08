@@ -24,9 +24,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserDetailsServiceIMP userDetailsServiceIMP;
 
+	@Autowired
+	private SimpleAuthenticationSuccessHandler successHandler;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/home").permitAll().anyRequest().authenticated().and().formLogin()
+		
+		//.antMatchers("/taskAdmin").hasAuthority("admin") per evitare che si acceda a delle pagine direttamente dall'url
+		http.authorizeRequests().antMatchers("/", "/home").permitAll()
+				.antMatchers("/taskAdmin").hasAuthority("admin")
+				.antMatchers("/taskUser").hasAuthority("user")
+				.anyRequest().authenticated().and().formLogin().successHandler(successHandler)
 				.loginPage("/login").usernameParameter("username").passwordParameter("password")
 
 				.permitAll().and().logout().permitAll();

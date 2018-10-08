@@ -6,11 +6,11 @@
     </head>
     <body>
     <center>
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        <h1 th:inline="text">Hello user: [[${#httpServletRequest.remoteUser}]]!</h1>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>
-        <a href="/taskAdmin" class="button">Task Page</a>
+        <a href="/taskUser" class="button">Task Page</a>
         </center>
     </body>
 </html>

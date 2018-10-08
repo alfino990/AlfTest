@@ -23,7 +23,7 @@ public class User {
 	@Column
 	private String type;
 
-	@OneToMany
+	@OneToMany(mappedBy = "user")
 	private List<Task> tasks = new ArrayList<>();
 
 	public User() {
